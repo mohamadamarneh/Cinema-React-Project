@@ -2,7 +2,7 @@ import "./SignIn.css";
 import TextField from "@mui/material/TextField";
 import GoogleIcon from "../../images/google.svg";
 import Box from "@mui/material/Box";
-import React, { useState } from "react";
+import React, { useState ,useContext} from "react";
 import IconButton from "@mui/material/IconButton";
 import FilledInput from "@mui/material/FilledInput";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -10,40 +10,55 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import AppleIcon from "../../images/apple.ico";
+import axios from "axios";
+import Usedata from "./Usedata";
+import { Link } from "react-router-dom";
+import { map } from "jquery";
+import {AuthContext , Signupprovider} from '../Authetication/AuthContext';
+
 const SignIn = () => {
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+
+  const auth = useContext(AuthContext);
+
+  function login(e) {
 
 
-  const [email, setemail] = useState('');
-  const [password, setpassword] = useState('');
+    e.preventDefault();
 
+    // const { Email_status, pass__status, check } = Usedata(email, password);
 
+    axios
+      .get("https://62c52d60a361f725127c1c74.mockapi.io/users")
+      .then(function (response) {
+        console.log(response.data[0].email);
 
+        for (let i = 0; i < 10; i++) {
+          if (
+            response.data[i].email !== email &&
+            response.data[i].password !== password
+          ) {
+            setemail("");
+            setpassword("");
+          }
+          if (response.data[i].email == email) {
+            if (response.data[i].password !== password) {
+              setpassword("");
+            } else {
 
-
-
-
-
-
-
-
-
-
-
-
-  // const handleChange = (prop) => (event) => {
-  //   setValues({ ...values, [prop]: event.target.value });
-  // };
-
-  // const handleClickShowPassword = () => {
-  //   setValues({
-  //     ...values,
-  //     showPassword: !values.showPassword,
-  //   });
-  // };
-
-  // const handleMouseDownPassword = (event) => {
-  //   event.preventDefault();
-  // };
+              console.log(response.data[i].id);
+              localStorage.setItem('id',response.data[i].id)
+              auth.setislogin(false);
+              window.location.href = "/";
+            }
+          } else {
+            setemail("");
+          }
+        }
+        return;
+      });
+  }
 
   return (
     <>
@@ -73,7 +88,7 @@ const SignIn = () => {
                 <div className="or__line">
                   <p className="span-h"></p>
                   <p className="span-p"> or</p>
-                  <p class="span-k"></p>
+                  <p className="span-k"></p>
                 </div>
                 <Box
                   component="form"
@@ -106,15 +121,26 @@ const SignIn = () => {
                 >
                   <div className="sign_name">
                     <h5>Email</h5>
-                    <input type="email" placeholder="Enter email" />
+                    <input
+                      type="email"
+                      placeholder="Enter email"
+                      value={email}
+                      onChange={(e) => setemail(e.target.value)}
+                    />
                   </div>
                   <div className="sign_name">
                     <h5>Password</h5>
-                    <input type="password" placeholder="Enter Pasword" />
+                    <input
+                      type="password"
+                      placeholder="Enter Pasword"
+                      value={password}
+                      onChange={(e) => setpassword(e.target.value)}
+                    />
                   </div>
                 </Box>
                 <div className="new__acc">
-                  <button>Create An Account</button>
+                  {/* <button > <link to= {{pathname : '/', }}> Login </link  ></button> */}
+                  <button onClick={login}>Login</button>
                   <p>
                     Aready have an Account? <a href="url">Sign in</a>
                   </p>

@@ -1,36 +1,38 @@
-import "./SignIn.css";
-import TextField from "@mui/material/TextField";
-import GoogleIcon from "../../images/google.svg";
-import Box from "@mui/material/Box";
-import React, { useState } from "react";
-import IconButton from "@mui/material/IconButton";
-import FilledInput from "@mui/material/FilledInput";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormControl from "@mui/material/FormControl";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import AppleIcon from "../../images/apple.ico";
-const SignIn = () => {
-  const [values, setValues] = useState({
-    password: "",
-    showPassword: false,
-  });
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+// import "./SignIn.css";
+// import TextField from "@mui/material/TextField";
+// import GoogleIcon from "../../images/google.svg";
+// import Box from "@mui/material/Box";
+// import React, { useState ,useContext} from "react";
+// import IconButton from "@mui/material/IconButton";
+// import FilledInput from "@mui/material/FilledInput";
+// import InputAdornment from "@mui/material/InputAdornment";
+// import FormControl from "@mui/material/FormControl";
+// import Visibility from "@mui/icons-material/Visibility";
+// import VisibilityOff from "@mui/icons-material/VisibilityOff";
+// import AppleIcon from "../../images/apple.ico";
+// import axios from "axios";
+// import Usedata from "./Usedata";
+// import { Link } from "react-router-dom";
+// import { map } from "jquery";
+// import {AuthContext , Signupprovider} from '../Authetication/AuthContext';
 
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
+// const logout = () => {
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+//   const auth = useContext(AuthContext);
+
+//   function login(e) {
+
+//     function out()
+//     {
+
+//     }
+//     e.preventDefault();
+
+//               localStorage.setItem('id',response.data[i].id)
+//               auth.setislogin(true);
+//               window.location.href = "/";
 
 
-};
+// };
 
-export default SignIn;
+// export default out;

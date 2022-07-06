@@ -1,12 +1,18 @@
 import Heading from "../Header/Heading";
 import "./MainNav.css";
-import React from "react";
+import React, { useContext , useState} from "react";
 import { Link } from "react-router-dom";
 import HomeIcon from "../../images/home-icon.svg";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import MovieIcon from "../../images/movie-icon.svg";
 // import TheatersIcon from "../../images/series-icon.svg";
 import $ from "jquery";
+
+import {AuthContext , Signupprovider} from '../Authetication/AuthContext';
+
+
+
+
 
 
 
@@ -18,6 +24,18 @@ $(function () {
 });
 
 const MainNav = () => {
+
+  const auth = useContext(AuthContext);
+  
+  function handellogout()
+  {
+  
+  auth.setislogin(true);
+  localStorage.removeItem('id');
+
+  }
+ 
+
   return (
     <>
       <nav className="navbar navbar-expand navbar-light fixed-top">
@@ -85,8 +103,11 @@ const MainNav = () => {
                     </ul>
 
           {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+          
+         
+          
           <div>
-            {true ? <div>
+            {auth.islogin ? <div>
 
 
               <div className="all__right">
@@ -101,8 +122,8 @@ const MainNav = () => {
             </div> : <div>
               <div className="all__right">
                 <div className="btn-login">
-                  <Link to="/LogOut">
-                    <button className=" login-btn">LogOut</button>
+                  <Link to="/">
+                    <button className=" login-btn" onClick={handellogout}>LogOut</button>
                   </Link>
                 </div>
               </div>
@@ -116,7 +137,7 @@ const MainNav = () => {
 
 
           <div>
-            {true ? <div>
+            {auth.islogin ? <div>
 
               <div className="all__right">
                 <div className="btn-login">
