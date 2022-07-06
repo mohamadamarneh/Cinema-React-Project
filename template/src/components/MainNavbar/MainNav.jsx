@@ -88,13 +88,54 @@ const MainNav = () => {
             </li> */}
           </ul>
 
-          <div className="all__right">
-            <div className="btn-login">
-              <Link to="/login">
-                <button className=" login-btn">login</button>
-              </Link>
-            </div>
+          {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+          <div>
+            {true ? <div>
+
+
+              <div className="all__right">
+                <div className="btn-login">
+                  <Link to="/login">
+                    <button className=" login-btn">login</button>
+                  </Link>
+                </div>
+              </div>
+
+
+            </div> : <div>
+              <div className="all__right">
+                <div className="btn-login">
+                  <Link to="/LogOut">
+                    <button className=" login-btn">LogOut</button>
+                  </Link>
+                </div>
+              </div>
+
+
+            </div>}
           </div>
+
+
+
+
+
+          <div>
+            {true ? <div>
+
+              <div className="all__right">
+                <div className="btn-login">
+                  <Link to="/Signup">
+                    <button className=" login-btn">Signup</button>
+                  </Link>
+                </div>
+              </div>
+
+            </div> : <div></div>}
+          </div>
+
+
+
+
         </div>
       </nav>
     </>

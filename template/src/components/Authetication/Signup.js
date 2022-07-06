@@ -12,7 +12,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import AppleIcon from "../../images/apple.ico";
 const SignIn = () => {
 
-
+  const [name, setname] = useState('');
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
 
@@ -30,6 +30,10 @@ const SignIn = () => {
 
 
 
+  // const [values, setValues] = useState({
+  //   password: "",
+  //   showPassword: false,
+  // });
   // const handleChange = (prop) => (event) => {
   //   setValues({ ...values, [prop]: event.target.value });
   // };
@@ -44,6 +48,7 @@ const SignIn = () => {
   // const handleMouseDownPassword = (event) => {
   //   event.preventDefault();
   // };
+  
 
   return (
     <>
@@ -52,7 +57,7 @@ const SignIn = () => {
           <div className="login__right card">
             <div className="form__login">
               <div className="login__title">
-                <h2>Create your free account</h2>
+                <h2 className="t">Create your free account</h2>
                 <p>No credit card required.</p>
               </div>
               <div className="login__btns">
@@ -105,18 +110,24 @@ const SignIn = () => {
                   autoComplete="off"
                 >
                   <div className="sign_name">
-                    <h5>Email</h5>
-                    <input type="email" placeholder="Enter email" />
-                  </div>
-                  <div className="sign_name">
-                    <h5>Password</h5>
-                    <input type="password" placeholder="Enter Pasword" />
+                  <div className="sign_pass">
+                      <h5>Name</h5>
+                      <input type="text" placeholder="Enter your name" value={name}/>
+                    </div>
+                    <div className="sign_pass">
+                      <h5>Email</h5>
+                      <input type="email" placeholder="Enter email" value={email}/>
+                    </div>
+                    <div className="sign_pass">
+                      <h5>Password</h5>
+                      <input type="password" placeholder="Enter Pasword" value={password}/>
+                    </div>
                   </div>
                 </Box>
                 <div className="new__acc">
                   <button>Create An Account</button>
                   <p>
-                    Aready have an Account? <a href="url">Sign in</a>
+                    Aready have an Account? <b>Sign in</b>
                   </p>
                 </div>
               </div>

@@ -25,6 +25,9 @@ function App() {
           <Switch>
             <Route exact path="/error" component={NotFound} />
             <Route path="/(login)" exact component={RoutesAuth} />
+            <Route path="/(Signup)" exact component={RoutesAuth} />
+            <Route path="/(LogOut)" exact component={RoutesAuth} />
+            
             <Route path="/" component={Routes} />
           </Switch>
         </BrowserRouter>
