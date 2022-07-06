@@ -84,6 +84,7 @@ const SinglePage = () => {
     fetchData();
     fetchSimilarMovies();
     fetchVideos();
+    fetchCommints();
 
     // eslint-disable-next-line
   }, [id, setContent]);
@@ -101,8 +102,36 @@ const SinglePage = () => {
   }
 
 
+  // start comments
 
 
+
+  const [comments, setcomments] = useState([]);
+  const fetchCommints = () => {
+    axios.get('https://62c47caf7d83a75e39fb0ca3.mockapi.io/comments')
+      .then((response) => {
+        setcomments(response.data);
+      })
+    // eslint-disable-next-line
+    // const newdata = comments.filter((ep) => ep.movie_id === 68062);
+    // setcomments(newdata);
+    console.log(comments);
+  }
+  const [comment, setcomment] = useState([]);
+  const AddCommints = () => {
+    axios.post(`https://62c47caf7d83a75e39fb0ca3.mockapi.io/comments`, {
+      user_id,
+      id,
+
+      comment,
+    })
+    window.alert('comments send Successfully');
+    window.location.href = `http://localhost:3000/movie/${id}`;
+  }
+
+
+
+  // end comments
   return (
     <>
       {isLoading ? (
@@ -188,7 +217,7 @@ const SinglePage = () => {
                     <h5>{content.tagline}</h5>
                   </div>
                   <div className="tagline ">
-                    <h6>TICKET PRICE: <span style={{color: '#2fc9f3'}}>5.00 JD</span></h6>
+                    <h6>TICKET PRICE: <span style={{ color: '#2fc9f3' }}>5.00 JD</span></h6>
                   </div>
                   <div className="overview">
                     <p>{content.overview}</p>
@@ -233,7 +262,7 @@ const SinglePage = () => {
                       <li>
                         STATUS: <span>{content.status}</span>
                       </li>
-                      
+
                     </ul>
                   </div>
                 </div>
@@ -259,9 +288,6 @@ const SinglePage = () => {
                     <option>Saturday</option>
                   </select>
                 </div>
-
-
-
                 <div class="form-group col-3">
                   <label>Time</label>
 
@@ -274,11 +300,11 @@ const SinglePage = () => {
 
                 <div class="form-group col-3">
                   <label>Number of Seats</label>
-                  <input type='number' class='form-control' min='1' max='150' placeholder="0" onChange={(e) => {setSeats(e.target.value);setPrice(e.target.value*5);}} required></input>
+                  <input type='number' class='form-control' min='1' max='150' placeholder="0" onChange={(e) => { setSeats(e.target.value); setPrice(e.target.value * 5); }} required></input>
                 </div>
                 <div class="form-group col-3">
                   <label>Price</label>
-                  <input type='text' class='form-control' min='1' max='150' placeholder="0" value={price+' JD'} required disabled></input>
+                  <input type='text' class='form-control' min='1' max='150' placeholder="0" value={price + ' JD'} required disabled></input>
                 </div>
                 <div class="col-12">
                   <br />
@@ -289,6 +315,42 @@ const SinglePage = () => {
 
             </div>
           </div>
+
+          {/*  comments */}
+
+          <div class="container-fluid mt-5" style={{ backgroundColor: "#0f022b00", color: "white"}}>
+            <div className="cast__title mb-4">
+              <h2>Comments</h2>
+            </div>
+            <div class="d-flex justify-content-center row" style={{ textAlign: "left" }}>
+              <div class="col-md-8" >
+                <div class="d-flex flex-column comment-section">
+                  {comments.filter((ep) => (ep.id === id)).map((c) => (
+                    <div class=" p-2">
+                      <div class="d-flex flex-row user-info" ><img class="rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" width="40" />
+                        <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">{c.user_name}</span></div>
+                      </div>
+                      <div class="d-flex flex-row user-info mt-2 pl-5" >
+                        <div class="d-flex flex-column justify-content-start ml-2"><span >{c.comment}</span></div>
+                      </div>
+
+
+                    </div>
+
+
+                  ))}
+
+                  <div class=" p-2">
+                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" width="40" /><textarea class="form-control ml-1 shadow-none textarea" onChange={(e) => setcomment(e.target.value)}></textarea></div>
+                    <div class="mt-2 text-left pl-5"><div class="btn btn-success px-4 mt-2 col-lg-" data-toggle="modal" onClick={AddCommints}>Send</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/*  end comments */}
+
+
           <div className="similar__shows">
             <div className="btn__title">
               <h5>You May Also Like </h5>

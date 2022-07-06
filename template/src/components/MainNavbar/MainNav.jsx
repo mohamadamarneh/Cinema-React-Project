@@ -1,12 +1,20 @@
 import Heading from "../Header/Heading";
 import "./MainNav.css";
-import React from "react";
+import React, { useContext , useState} from "react";
 import { Link } from "react-router-dom";
 import HomeIcon from "../../images/home-icon.svg";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import MovieIcon from "../../images/movie-icon.svg";
-import TheatersIcon from "../../images/series-icon.svg";
+// import TheatersIcon from "../../images/series-icon.svg";
 import $ from "jquery";
+
+import {AuthContext , Signupprovider} from '../Authetication/AuthContext';
+
+
+
+
+
+
 
 $(function () {
   $(document).on("scroll", function () {
@@ -16,6 +24,18 @@ $(function () {
 });
 
 const MainNav = () => {
+
+  const auth = useContext(AuthContext);
+  
+  function handellogout()
+  {
+  
+  auth.setislogin(true);
+  localStorage.removeItem('id');
+
+  }
+ 
+
   return (
     <>
       <nav className="navbar navbar-expand navbar-light fixed-top">
@@ -39,19 +59,7 @@ const MainNav = () => {
                 Home <span className="sr-only">(current)</span>
               </Link>
             </li>
-            <li className="nav-item  nav__link">
-              <Link className="nav-link" to="/treading">
-                <WhatshotIcon
-                  style={{
-                    fontSize: "17px",
-                    marginBottom: "5px",
-
-                    marginRight: "2px",
-                  }}
-                />
-                Treading
-              </Link>
-            </li>
+           
             <li className="nav-item  nav__link">
               <Link className="nav-link" to="/all-movies">
                 <img
@@ -66,35 +74,85 @@ const MainNav = () => {
                 Movies
               </Link>
             </li>
-            <li className="nav-item nav__link">
-              <Link className="nav-link" to="/all-series">
-                <img
-                  src={TheatersIcon}
+            <li className="nav-item  nav__link">
+              <Link className="nav-link" to="/treading">
+                <WhatshotIcon
                   style={{
                     fontSize: "17px",
                     marginBottom: "5px",
-                    marginRight: "1px",
+
+                    marginRight: "2px",
                   }}
-                  alt=""
                 />
-                TvSeries
+                About 
               </Link>
             </li>
-
-            {/* <li className="nav-item">
-              <Link className="nav-link" to="/not">
-                Search
+            <li className="nav-item nav__link">
+              <Link className="nav-link" to="/all-series">
+           
+                <i class='fas fa-mobile-alt'   style={{
+                    fontSize: "17px",
+                    marginBottom: "5px",
+                    marginRight: "1px",
+                  }}></i>
+                contact US
               </Link>
-            </li> */}
-          </ul>
+            </li>
+            
 
-          <div className="all__right">
-            <div className="btn-login">
-              <Link to="/login">
-                <button className=" login-btn">login</button>
-              </Link>
-            </div>
+                    </ul>
+
+          {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+          
+         
+          
+          <div>
+            {auth.islogin ? <div>
+
+
+              <div className="all__right">
+                <div className="btn-login">
+                  <Link to="/login">
+                    <button className=" login-btn">login</button>
+                  </Link>
+                </div>
+              </div>
+
+
+            </div> : <div>
+              <div className="all__right">
+                <div className="btn-login">
+                  <Link to="/">
+                    <button className=" login-btn" onClick={handellogout}>LogOut</button>
+                  </Link>
+                </div>
+              </div>
+
+
+            </div>}
           </div>
+
+
+
+
+
+          <div>
+            {auth.islogin ? <div>
+
+              <div className="all__right">
+                <div className="btn-login">
+                  <Link to="/Signup">
+                    <button className=" login-btn">Signup</button>
+                  </Link>
+                </div>
+              </div>
+
+            </div> : <div></div>}
+          </div>
+
+
+
+
         </div>
       </nav>
     </>
