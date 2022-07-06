@@ -327,7 +327,7 @@ const SinglePage = () => {
                 <div class="d-flex flex-column comment-section">
                   {comments.filter((ep) => (ep.id === id)).map((c) => (
                     <div class=" p-2">
-                      <div class="d-flex flex-row user-info" ><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40" />
+                      <div class="d-flex flex-row user-info" ><img class="rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" width="40" />
                         <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">{c.user_name}</span></div>
                       </div>
                       <div class="d-flex flex-row user-info mt-2 pl-5" >
@@ -341,7 +341,7 @@ const SinglePage = () => {
                   ))}
 
                   <div class=" p-2">
-                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40" /><textarea class="form-control ml-1 shadow-none textarea" onChange={(e) => setcomment(e.target.value)}></textarea></div>
+                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" width="40" /><textarea class="form-control ml-1 shadow-none textarea" onChange={(e) => setcomment(e.target.value)}></textarea></div>
                     <div class="mt-2 text-left pl-5"><div class="btn btn-success px-4 mt-2 col-lg-" data-toggle="modal" onClick={AddCommints}>Send</div></div>
                   </div>
                 </div>
