@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 import HomeIcon from "../../images/home-icon.svg";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import MovieIcon from "../../images/movie-icon.svg";
-import TheatersIcon from "../../images/series-icon.svg";
+// import TheatersIcon from "../../images/series-icon.svg";
 import $ from "jquery";
+
+
 
 $(function () {
   $(document).on("scroll", function () {
@@ -39,19 +41,7 @@ const MainNav = () => {
                 Home <span className="sr-only">(current)</span>
               </Link>
             </li>
-            <li className="nav-item  nav__link">
-              <Link className="nav-link" to="/treading">
-                <WhatshotIcon
-                  style={{
-                    fontSize: "17px",
-                    marginBottom: "5px",
-
-                    marginRight: "2px",
-                  }}
-                />
-                Treading
-              </Link>
-            </li>
+           
             <li className="nav-item  nav__link">
               <Link className="nav-link" to="/all-movies">
                 <img
@@ -66,27 +56,33 @@ const MainNav = () => {
                 Movies
               </Link>
             </li>
-            <li className="nav-item nav__link">
-              <Link className="nav-link" to="/all-series">
-                <img
-                  src={TheatersIcon}
+            <li className="nav-item  nav__link">
+              <Link className="nav-link" to="/treading">
+                <WhatshotIcon
                   style={{
                     fontSize: "17px",
                     marginBottom: "5px",
-                    marginRight: "1px",
+
+                    marginRight: "2px",
                   }}
-                  alt=""
                 />
-                TvSeries
+                About 
               </Link>
             </li>
-
-            {/* <li className="nav-item">
-              <Link className="nav-link" to="/not">
-                Search
+            <li className="nav-item nav__link">
+              <Link className="nav-link" to="/all-series">
+           
+                <i class='fas fa-mobile-alt'   style={{
+                    fontSize: "17px",
+                    marginBottom: "5px",
+                    marginRight: "1px",
+                  }}></i>
+                contact US
               </Link>
-            </li> */}
-          </ul>
+            </li>
+            
+
+                    </ul>
 
           {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
           <div>

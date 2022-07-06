@@ -10,10 +10,12 @@ const Footer = () => {
           <div className="col-fot1">
             <Heading />
             <div className="footer__details">
-              <p>Cinemy Movies and Tv Series</p>
-              <p>Nakuru, Kenya</p>
+              <p>Cinemy Movies and Tv Series 
+              Unlimited movies, TV shows, and more.
+              </p>
+              <p>Irbid, Jordan</p>
               <p>
-                call Us: <span>(+254) 78728340</span>
+                call Us: <span>(+962) 777777777</span>
               </p>
             </div>
           </div>
@@ -22,19 +24,19 @@ const Footer = () => {
             <div className="menu-footer">
               <ul className="menu">
                 <li className="menu-item ">
-                  <Link to="#">About CinemyPlex</Link>
+                  <Link to="#">Home</Link>
                 </li>
                 <li id="menu-item-72" className="menu-item">
-                  <Link to="#">Contact Us</Link>
+                  <Link to="#">Movies</Link>
                 </li>
                 <li id="menu-item-73" className="menu-item ">
-                  <Link to="#">Forums</Link>
+                  <Link to="#"> About us</Link>
                 </li>
-                <li id="menu-item-74" className="menu-item">
+                {/* <li id="menu-item-74" className="menu-item">
                   <Link to="#">Blog</Link>
-                </li>
+                </li> */}
                 <li id="menu-item-75" className="menu-item ">
-                  <Link to="#">Help Center</Link>
+                  <Link to="#"> contact US</Link>
                 </li>
               </ul>
             </div>
@@ -56,7 +58,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="col-fot5">
+          {/* <div className="col-fot5">
             <h4 className="footer-title">Newsletter</h4>
             <div className="footer-email">
               <p>
@@ -70,7 +72,8 @@ const Footer = () => {
                 </div>
               </form>
             </div>
-          </div>
+          </div> */}
+          
         </div>
       </div>
     </>
