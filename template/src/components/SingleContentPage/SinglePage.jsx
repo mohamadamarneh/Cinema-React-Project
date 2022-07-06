@@ -100,19 +100,38 @@ const SinglePage = () => {
     })
     window.alert('Booking Done Successfully');
   }
-const [comments , setcomments] = useState([]);
-  const fetchCommints =() => {
-     axios.get('https://62c47caf7d83a75e39fb0ca3.mockapi.io/comments')
-            .then((response) => {
-              setcomments(response.data);
-            })
-      // eslint-disable-next-line
-      const newdata = comments.filter((ep)=> ep.movie_id == 4031);
-      setcomments(newdata);
-      console.log(newdata);
-    }
 
 
+  // start comments
+
+
+
+  const [comments, setcomments] = useState([]);
+  const fetchCommints = () => {
+    axios.get('https://62c47caf7d83a75e39fb0ca3.mockapi.io/comments')
+      .then((response) => {
+        setcomments(response.data);
+      })
+    // eslint-disable-next-line
+    // const newdata = comments.filter((ep) => ep.movie_id === 68062);
+    // setcomments(newdata);
+    console.log(comments);
+  }
+  const [comment, setcomment] = useState([]);
+  const AddCommints = () => {
+    axios.post(`https://62c47caf7d83a75e39fb0ca3.mockapi.io/comments`, {
+      user_id,
+      id,
+
+      comment,
+    })
+    window.alert('comments send Successfully');
+    window.location.href = `http://localhost:3000/movie/${id}`;
+  }
+
+
+
+  // end comments
   return (
     <>
       {isLoading ? (
@@ -198,7 +217,7 @@ const [comments , setcomments] = useState([]);
                     <h5>{content.tagline}</h5>
                   </div>
                   <div className="tagline ">
-                    <h6>TICKET PRICE: <span style={{color: '#2fc9f3'}}>5.00 JD</span></h6>
+                    <h6>TICKET PRICE: <span style={{ color: '#2fc9f3' }}>5.00 JD</span></h6>
                   </div>
                   <div className="overview">
                     <p>{content.overview}</p>
@@ -243,14 +262,13 @@ const [comments , setcomments] = useState([]);
                       <li>
                         STATUS: <span>{content.status}</span>
                       </li>
-                      
+
                     </ul>
                   </div>
                 </div>
               </div>
             )}
           </div>
-          
           <div className="all__cast px-5 pt-5 mt-5 mb-5 container">
             <div className="cast__title mb-4">
               <h2>Reservation</h2>
@@ -270,9 +288,6 @@ const [comments , setcomments] = useState([]);
                     <option>Saturday</option>
                   </select>
                 </div>
-
-
-
                 <div class="form-group col-3">
                   <label>Time</label>
 
@@ -285,11 +300,11 @@ const [comments , setcomments] = useState([]);
 
                 <div class="form-group col-3">
                   <label>Number of Seats</label>
-                  <input type='number' class='form-control' min='1' max='150' placeholder="0" onChange={(e) => {setSeats(e.target.value);setPrice(e.target.value*5);}} required></input>
+                  <input type='number' class='form-control' min='1' max='150' placeholder="0" onChange={(e) => { setSeats(e.target.value); setPrice(e.target.value * 5); }} required></input>
                 </div>
                 <div class="form-group col-3">
                   <label>Price</label>
-                  <input type='text' class='form-control' min='1' max='150' placeholder="0" value={price+' JD'} required disabled></input>
+                  <input type='text' class='form-control' min='1' max='150' placeholder="0" value={price + ' JD'} required disabled></input>
                 </div>
                 <div class="col-12">
                   <br />
@@ -301,64 +316,41 @@ const [comments , setcomments] = useState([]);
             </div>
           </div>
 
-{/*  comments */}
+          {/*  comments */}
 
-          <section class="all__cast px-5 pt-5 mt-5 mb-5 container" id="comments" >
-    <div class="container">   
-    	<div class="row">
-            <div class="col-sm-8">   
-                <form>
-                <div className="cast__title mb-4">
+          <div class="container-fluid mt-5" style={{ backgroundColor: "#0f022b00", color: "white"}}>
+            <div className="cast__title mb-4">
               <h2>Comments</h2>
             </div>
-                    <fieldset>
-                        <div class="row">
-                            <div class="col-2 hidden-xs"> 
-                            	<img class="img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" width="70px"/>
-                            </div>
-                            <div class="form-group col-7">
-                                <textarea class="form-control" id="message" placeholder="Your message" required=""></textarea>
-                            </div>
-                            <div class="col-2 ">
-                        
-                            <div class="btn btn-success px-4 mt-2 col-lg-" data-toggle="modal" onClick={handleBook}>Book Now</div></div>
-                        </div>  	
-                    </fieldset>
-                </form>
-              
-{
-  comments.map((c)=>{
-<h1>{}</h1>
-  })
-}
-<div class="media">
-<a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""/></a>
-<div class="media-body">
-    <h4 class="media-heading">John Doe</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <ul class="list-unstyled list-inline media-detail pull-left">
-        <li><i class="fa fa-calendar"></i>27/02/2014</li>
-        <li><i class="fa fa-thumbs-up"></i>13</li>
-    </ul>
-    <ul class="list-unstyled list-inline media-detail pull-right">
-        <li class=""><a href="">Like</a></li>
-        <li class=""><a href="">Reply</a></li>
-    </ul>
-</div>
-</div>
+            <div class="d-flex justify-content-center row" style={{ textAlign: "left" }}>
+              <div class="col-md-8" >
+                <div class="d-flex flex-column comment-section">
+                  {comments.filter((ep) => (ep.id === id)).map((c) => (
+                    <div class=" p-2">
+                      <div class="d-flex flex-row user-info" ><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40" />
+                        <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">{c.user_name}</span></div>
+                      </div>
+                      <div class="d-flex flex-row user-info mt-2 pl-5" >
+                        <div class="d-flex flex-column justify-content-start ml-2"><span >{c.comment}</span></div>
+                      </div>
 
 
+                    </div>
 
-                
-              
+
+                  ))}
+
+                  <div class=" p-2">
+                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40" /><textarea class="form-control ml-1 shadow-none textarea" onChange={(e) => setcomment(e.target.value)}></textarea></div>
+                    <div class="mt-2 text-left pl-5"><div class="btn btn-success px-4 mt-2 col-lg-" data-toggle="modal" onClick={AddCommints}>Send</div></div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-    </div>
-</section>
+          </div>
+          {/*  end comments */}
 
-{/*  end comments */}
 
-    
           <div className="similar__shows">
             <div className="btn__title">
               <h5>You May Also Like </h5>
