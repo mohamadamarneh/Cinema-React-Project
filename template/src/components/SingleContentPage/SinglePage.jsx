@@ -16,6 +16,17 @@ const SinglePage = () => {
       $(".ico").toggleClass("press", 1000);
     });
   });
+
+  const [user_id, setUserid] = useState(1);
+  const [time, setTime] = useState('');
+  const [day, setDay] = useState('');
+  const [price, setPrice] = useState(0);
+  const [num_seats, setSeats] = useState(0);
+
+
+
+
+
   const [content, setContent] = useState();
   const [similarMovies, setSimilarMovies] = useState();
   const [video, setVideo] = useState();
@@ -76,6 +87,22 @@ const SinglePage = () => {
 
     // eslint-disable-next-line
   }, [id, setContent]);
+
+
+  const handleBook = () => {
+    axios.post(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations`, {
+      user_id,
+      time,
+      day,
+      num_seats,
+      price
+    })
+    window.alert('Booking Done Successfully');
+  }
+
+
+
+
   return (
     <>
       {isLoading ? (
@@ -160,6 +187,9 @@ const SinglePage = () => {
                   <div className="tagline">
                     <h5>{content.tagline}</h5>
                   </div>
+                  <div className="tagline ">
+                    <h6>TICKET PRICE: <span style={{color: '#2fc9f3'}}>5.00 JD</span></h6>
+                  </div>
                   <div className="overview">
                     <p>{content.overview}</p>
                   </div>
@@ -203,18 +233,60 @@ const SinglePage = () => {
                       <li>
                         STATUS: <span>{content.status}</span>
                       </li>
+                      
                     </ul>
                   </div>
                 </div>
               </div>
             )}
           </div>
-          <div className="all__cast px-5 pt-5">
-            <div className="cast__title">
-              <h2>Cast</h2>
+          <div className="all__cast px-5 pt-5 mt-5 mb-5 container">
+            <div className="cast__title mb-4">
+              <h2>Reservation</h2>
             </div>
-            <div>
-              <Carousel mediaType={mediaType} id={id} />
+            <div class='col-12'>
+              {/* <Carousel mediaType={mediaType} id={id} /> */}
+              <div class='row'>
+                <div class="form-group col-3">
+                  <label >Day</label>
+                  <select class="form-control" onChange={(e) => setDay(e.target.value)} required>
+                    <option>Sunday</option>
+                    <option>Monday</option>
+                    <option>Tuesday</option>
+                    <option>Wednesday</option>
+                    <option>Thursday</option>
+                    <option>Friday</option>
+                    <option>Saturday</option>
+                  </select>
+                </div>
+
+
+
+                <div class="form-group col-3">
+                  <label>Time</label>
+
+                  <select class="form-control" onChange={(e) => setTime(e.target.value)} required>
+                    <option>13:00 - 15:00</option>
+                    <option>15:30 - 17:00</option>
+                    <option>19:00 - 21:00</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-3">
+                  <label>Number of Seats</label>
+                  <input type='number' class='form-control' min='1' max='150' placeholder="0" onChange={(e) => {setSeats(e.target.value);setPrice(e.target.value*5);}} required></input>
+                </div>
+                <div class="form-group col-3">
+                  <label>Price</label>
+                  <input type='text' class='form-control' min='1' max='150' placeholder="0" value={price+' JD'} required disabled></input>
+                </div>
+                <div class="col-12">
+                  <br />
+                  <div class="btn btn-success px-4 mt-2" data-toggle="modal" onClick={handleBook}>Book Now</div>
+                </div>
+
+              </div>
+
             </div>
           </div>
           <div className="similar__shows">
