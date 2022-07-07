@@ -7,8 +7,6 @@ import WhatshotIcon from "@mui/icons-material/Whatshot";
 import MovieIcon from "../../images/movie-icon.svg";
 // import TheatersIcon from "../../images/series-icon.svg";
 import $ from "jquery";
-<<<<<<< HEAD
-=======
 
 import {AuthContext , Signupprovider} from '../Authetication/AuthContext';
 
@@ -18,7 +16,6 @@ import {AuthContext , Signupprovider} from '../Authetication/AuthContext';
 
 
 
->>>>>>> 577a85d1b46bf2bc5c6d2abcc0466fe79634c4e1
 $(function () {
   $(document).on("scroll", function () {
     var $nav = $(".navbar");

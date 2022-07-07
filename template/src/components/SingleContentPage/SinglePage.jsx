@@ -26,12 +26,8 @@ const SinglePage = () => {
   const [day, setDay] = useState('');
   const [price, setPrice] = useState(0);
   const [num_seats, setSeats] = useState(0);
-<<<<<<< HEAD
-  const [Flag2, setFlag2] = useState(false);
-=======
 
   const auth = useContext(AuthContext);
->>>>>>> 577a85d1b46bf2bc5c6d2abcc0466fe79634c4e1
 
   // console.log(localStorage.getItem('id'));
 
@@ -102,17 +98,6 @@ const SinglePage = () => {
 
   console.log(auth.islogin);
   const handleBook = () => {
-<<<<<<< HEAD
-    axios.post(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations`, {
-      user_id,
-      time,
-      day,
-      num_seats,
-      price
-    })
-    // window.alert('Booking Done Successfully');
-    setFlag2(true);
-=======
 
     if (user_id != null) {
       axios.post(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations`, {
@@ -130,7 +115,6 @@ const SinglePage = () => {
     }
 
 
->>>>>>> 577a85d1b46bf2bc5c6d2abcc0466fe79634c4e1
   }
 
 
@@ -303,12 +287,10 @@ const SinglePage = () => {
               </div>
             )}
           </div>
-          <div className="all__cast px-5 pt-5 mt-5 mb-5 container">
+          <div className="all__cast px-5 pt-5 mt-5 mb-5 ">
             <div className="cast__title mb-4">
               <h2>Reservation</h2>
-              {Flag2 && <div class="alert alert-success" role="alert">
-              Booking Done Successfully
-              </div>}
+             
             </div>
             <div class='col-12'>
               {/* <Carousel mediaType={mediaType} id={id} /> */}
@@ -354,17 +336,9 @@ const SinglePage = () => {
           </div>
 
 
-
-
-
-
-
-
-
-
           {/*  comments */}
 
-          <div class="container-fluid mt-5" style={{ backgroundColor: "#0f022b00", color: "white" }}>
+          <div class="container-fluid " style={{ backgroundColor: "#0f022b00", color: "white" }}>
             <div className="cast__title mb-4">
               <h2>Comments</h2>
             </div>
