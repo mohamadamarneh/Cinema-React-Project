@@ -6,10 +6,10 @@ const Treading = () => {
 
 
   return (
-    <>
+    <div class="container">
 
       <div class="section section-padding pb-0 " style={{ color: "white", textAlign: "left", marginTop: "100px" }}>
-        <div class="container">
+        <div class="">
           <div class="row learts-mb-n30">
 
             <div class="col-md-6 col-12 align-self-center learts-mb-30 ">
@@ -34,7 +34,7 @@ const Treading = () => {
       <br />
 
       <div class="section section-padding pb-0 mt5 " >
-        <div class="container">
+        <div class="">
           <div class="row learts-mb-n30">
             <div class=" col-md-6 col-12 align-self-center learts-mb-30">
               <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1156&q=80" alt="" class="img-fluid" />
@@ -58,7 +58,7 @@ const Treading = () => {
 
    
 
-      </>
+      </div>
       );
 };
 

@@ -34,10 +34,10 @@ const TvSeries = () => {
   }
 
   return (
-    <>
-      <div class="section section-padding pb-0 " style={{ color: "white", textAlign: "left", marginTop: "100px" }}>
+    <div>
+      <div class="section section-padding pb-0 container" style={{ color: "white", textAlign: "left", marginTop: "100px" }}>
      
-        <div class="container">
+        <div class="">
           <div class="row learts-mb-n30">
 
             <div class="col-md-6 col-12 align-self-center learts-mb-30 mt-5 " style={{ marginTop: "100px" }}>
@@ -68,7 +68,7 @@ const TvSeries = () => {
       <br />
       <br />
 
-    </>
+    </div>
   );
 };
 
