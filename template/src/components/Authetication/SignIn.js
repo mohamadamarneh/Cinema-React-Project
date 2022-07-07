@@ -141,8 +141,10 @@ const SignIn = () => {
                 <div className="new__acc">
                   {/* <button > <link to= {{pathname : '/', }}> Login </link  ></button> */}
                   <button onClick={login}>Login</button>
-                  <p>
-                    Aready have an Account? <a href="url">Sign in</a>
+                  <p>  Don't have an Account? 
+                    <Link to ="/signup">
+                         <a href="url">Register</a>
+                    </Link>
                   </p>
                 </div>
               </div>

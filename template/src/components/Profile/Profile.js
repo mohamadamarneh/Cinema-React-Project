@@ -28,7 +28,7 @@ const Profile = () => {
     //     , [])
 
 
-    const edit=  useNavigate();
+    // const edit=  useNavigate();
 
 
     console.log(movies)
@@ -53,7 +53,7 @@ const Profile = () => {
 
                         </div>
                         <div className="media   py-3 mb-3">
-                            <button onClick={()=>edit('/edit')} className="btn btn-primary btn-sm">Edit Profile</button>&nbsp;
+                            {/* <button onClick={()=>edit('/edit')} className="btn btn-primary btn-sm">Edit Profile</button>&nbsp; */}
                             {/* <a className="btn btn-danger btn-sm">log out</a>&nbsp; */}
                         </div>
 
