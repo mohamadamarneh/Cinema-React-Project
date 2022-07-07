@@ -8,6 +8,10 @@ import MainNav from "../../components/MainNavbar/MainNav";
 import Footer from "../../components/Footer/Footer";
 import CopyWrite from "../../components/CopyWrite__footer/LastFooter";
 import BottomNav from "../../components/MainNavbar/BottomNav";
+import Profile from "../../components/Profile/Profile";
+import EditProfile from "../../components/editProfile/editProfile";
+
+
 
 const Routes = () => {
   return (
@@ -20,6 +24,11 @@ const Routes = () => {
           <Route path="/all-movies" component={Movies} />
           <Route path="/treading" component={Treading} />
           <Route path="/all-series" component={TvSeries} />
+
+          <Route path="/profile" component={Profile} />
+          <Route path='/edit' component={EditProfile} />
+
+
           <Route path="/:media-:id-category/" children={<Movies />} />
           <Route path="/movies/:id" children={<Movies />} />
           <Route path="/series/:id" children={<TvSeries />} />

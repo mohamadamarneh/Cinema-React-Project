@@ -16,8 +16,10 @@ const Movies = () => {
   const [filterGenre, setFilterGenre] = useState([]);
   const [genreTitle, setGenreTitle] = useState();
   // eslint-disable-next-line
+
   const [color, setColor] = useState("grey");
   const genreforURL = useGenre(filterGenre);
+  
 
   // fetch Movies from TMDB
   const fetchMovieApi = async () => {

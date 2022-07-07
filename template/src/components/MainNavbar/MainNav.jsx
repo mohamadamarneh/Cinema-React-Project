@@ -1,12 +1,24 @@
 import Heading from "../Header/Heading";
 import "./MainNav.css";
-import React from "react";
+import React, { useContext , useState} from "react";
 import { Link } from "react-router-dom";
 import HomeIcon from "../../images/home-icon.svg";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import MovieIcon from "../../images/movie-icon.svg";
 // import TheatersIcon from "../../images/series-icon.svg";
 import $ from "jquery";
+<<<<<<< HEAD
+=======
+
+import {AuthContext , Signupprovider} from '../Authetication/AuthContext';
+
+
+
+
+
+
+
+>>>>>>> 577a85d1b46bf2bc5c6d2abcc0466fe79634c4e1
 $(function () {
   $(document).on("scroll", function () {
     var $nav = $(".navbar");
@@ -14,6 +26,18 @@ $(function () {
   });
 });
 const MainNav = () => {
+
+  const auth = useContext(AuthContext);
+  
+  function handellogout()
+  {
+  
+  auth.setislogin(true);
+  localStorage.removeItem('id');
+
+  }
+ 
+
   return (
     <>
       <nav className="navbar navbar-expand navbar-light fixed-top">
@@ -77,8 +101,11 @@ const MainNav = () => {
             </li>
                     </ul>
           {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+          
+         
+          
           <div>
-            {true ? <div>
+            {auth.islogin ? <div>
 
 
               <div className="all__right">
@@ -91,15 +118,15 @@ const MainNav = () => {
             </div> : <div>
               <div className="all__right">
                 <div className="btn-login">
-                  <Link to="/LogOut">
-                    <button className=" login-btn">LogOut</button>
+                  <Link to="/">
+                    <button className=" login-btn" onClick={handellogout}>LogOut</button>
                   </Link>
                 </div>
               </div>
             </div>}
           </div>
           <div>
-            {true ? <div>
+            {auth.islogin ? <div>
 
               <div className="all__right">
                 <div className="btn-login">
