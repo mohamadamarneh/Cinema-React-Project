@@ -6,9 +6,12 @@ import SingleData from "../SingleData/SingleData";
 import "./SinglePage.css";
 import SingleVideoPage from "./SingleVideoPage";
 import Myloader from "react-spinners/ClipLoader";
+import { AuthContext, Signupprovider } from '../Authetication/AuthContext';
+
 
 import Carousel from "../Carousel/Carousel";
 import $ from "jquery";
+import { useContext } from "react";
 
 const SinglePage = () => {
   $(function () {
@@ -17,13 +20,16 @@ const SinglePage = () => {
     });
   });
 
-  const [user_id, setUserid] = useState(1);
+  // const [user_id, setUserid] = useState(0);
+  const user_id = JSON.parse(localStorage.getItem('id'));
   const [time, setTime] = useState('');
   const [day, setDay] = useState('');
   const [price, setPrice] = useState(0);
   const [num_seats, setSeats] = useState(0);
 
+  const auth = useContext(AuthContext);
 
+  // console.log(localStorage.getItem('id'));
 
 
 
@@ -90,15 +96,25 @@ const SinglePage = () => {
   }, [id, setContent]);
 
 
+  console.log(auth.islogin);
   const handleBook = () => {
-    axios.post(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations`, {
-      user_id,
-      time,
-      day,
-      num_seats,
-      price
-    })
-    window.alert('Booking Done Successfully');
+
+    if (user_id != null) {
+      axios.post(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations`, {
+        user_id,
+        time,
+        day,
+        num_seats,
+        price
+      })
+      window.alert('Booking Done Successfully');
+    }
+    else {
+      console.log(auth.islogin);
+      window.alert('Please Login To Complete Your Reservation');
+    }
+
+
   }
 
 
@@ -117,6 +133,7 @@ const SinglePage = () => {
     // setcomments(newdata);
     console.log(comments);
   }
+
   const [comment, setcomment] = useState([]);
   const AddCommints = () => {
     axios.post(`https://62c47caf7d83a75e39fb0ca3.mockapi.io/comments`, {
@@ -276,7 +293,7 @@ const SinglePage = () => {
             <div class='col-12'>
               {/* <Carousel mediaType={mediaType} id={id} /> */}
               <div class='row'>
-                <div class="form-group col-3">
+                <div class="form-group col-3 mt-1">
                   <label >Day</label>
                   <select class="form-control" onChange={(e) => setDay(e.target.value)} required>
                     <option>Sunday</option>
@@ -288,7 +305,7 @@ const SinglePage = () => {
                     <option>Saturday</option>
                   </select>
                 </div>
-                <div class="form-group col-3">
+                <div class="form-group col-3 mt-1">
                   <label>Time</label>
 
                   <select class="form-control" onChange={(e) => setTime(e.target.value)} required>
@@ -318,7 +335,7 @@ const SinglePage = () => {
 
           {/*  comments */}
 
-          <div class="container-fluid mt-5" style={{ backgroundColor: "#0f022b00", color: "white"}}>
+          <div class="container-fluid mt-5" style={{ backgroundColor: "#0f022b00", color: "white" }}>
             <div className="cast__title mb-4">
               <h2>Comments</h2>
             </div>
@@ -327,8 +344,11 @@ const SinglePage = () => {
                 <div class="d-flex flex-column comment-section">
                   {comments.filter((ep) => (ep.id === id)).map((c) => (
                     <div class=" p-2">
-                      <div class="d-flex flex-row user-info" ><img class="rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" width="40" />
-                        <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">{c.user_name}</span></div>
+                      <div class="d-flex flex-row user-info" >
+                        <img class="rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" width="40" />
+                        <div class="d-flex flex-column justify-content-start ml-2">
+                          <span class="d-block font-weight-bold name">{c.user_name}</span>
+                        </div>
                       </div>
                       <div class="d-flex flex-row user-info mt-2 pl-5" >
                         <div class="d-flex flex-column justify-content-start ml-2"><span >{c.comment}</span></div>
@@ -341,9 +361,18 @@ const SinglePage = () => {
                   ))}
 
                   <div class=" p-2">
-                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" width="40" /><textarea class="form-control ml-1 shadow-none textarea" onChange={(e) => setcomment(e.target.value)}></textarea></div>
-                    <div class="mt-2 text-left pl-5"><div class="btn btn-success px-4 mt-2 col-lg-" data-toggle="modal" onClick={AddCommints}>Send</div></div>
+                    <div class="d-flex flex-row align-items-start">
+                      <img class="rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" width="40" />
+                      <textarea class="form-control ml-1 shadow-none textarea" onChange={(e) => setcomment(e.target.value)} disabled={user_id != null ? false : true}></textarea>
+                    </div>
+                    <div class="alert alert-warning ml-5 mt-1" role="alert">
+                        You need to be logged in to be able to comment
+                      </div>
+                    <div class="mt-2 text-left pl-5">
+                      <div class="btn btn-success px-4 mt-2 col-lg-" data-toggle="modal" onClick={AddCommints} >Send</div>
+                    </div>
                   </div>
+
                 </div>
               </div>
             </div>
