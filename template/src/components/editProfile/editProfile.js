@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import "./editProfile.css";
 import axios from 'axios';
+import {AuthContext , Signupprovider} from '../Authetication/AuthContext';
 
 
 
 const EditProfile = () => {
+
+    let userId=localStorage.getItem('id')
 
 
     const [Persons, setapi] = useState('');

@@ -1,26 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import "./Profile.css";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 
 const Profile = () => {
+
+    let userId=localStorage.getItem('id')
+
     const [Persons, setapi] = useState([]);
+
     const [movies, setMovies] = useState([{"user_id":41051,"time":"WZP%]Q!#Wa","day":"?2x2V,uX#S","num_seats":98636,"price":32117.86,"id":"1"},{"user_id":47094,"time":"%9s,HQLw|!","day":"vfKS0,IQ+L","num_seats":14180,"price":26442.63,"id":"2"},{"user_id":1,"time":"15:30 - 17:00","day":"Monday","num_seats":"2","price":0,"id":"3"},{"user_id":1,"time":"15:30 - 17:00","day":"Monday","num_seats":"3","price":15,"id":"4"},{"user_id":1,"time":"19:00 - 21:00","day":"Friday","num_seats":"3","price":15,"id":"5"},{"user_id":1,"time":"","day":"","num_seats":0,"price":0,"id":"6"},{"user_id":1,"time":"15:30 - 17:00","day":"Sunday","num_seats":"1","price":5,"id":"7"}]);
 
     useEffect(() => {
-        fetch(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations?user_id=1`)
+        fetch(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations?user_id=${userId}`)
             .then(x => x.json())
             .then(y => setapi(y));
     }, [] )
 
-
+    
     // useEffect(() => {
-    //     fetch(`https://62c52d60a361f725127c1c74.mockapi.io/users/1`)
+    //     fetch(`https://62c52d60a361f725127c1c74.mockapi.io/users/${userId}`)
     //         .then(x => x.json())
     //         .then(y => setapi(y));
     // }
     //     , [])
+
+
+    const edit=  useNavigate();
 
 
     console.log(movies)
@@ -45,8 +53,8 @@ const Profile = () => {
 
                         </div>
                         <div className="media   py-3 mb-3">
-                            <a path='/edit' className="btn btn-primary btn-sm">Edit Profile</a>&nbsp;
-                            <a className="btn btn-danger btn-sm">log out</a>&nbsp;
+                            <button onClick={()=>edit('/edit')} className="btn btn-primary btn-sm">Edit Profile</button>&nbsp;
+                            {/* <a className="btn btn-danger btn-sm">log out</a>&nbsp; */}
                         </div>
 
                     </div>
