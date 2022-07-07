@@ -4,6 +4,7 @@
   background-image: url("https://wallpaperboat.com/wp-content/uploads/2019/11/cinema-01.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  clip-path: clip-source;
 }
 .login__row {
   display: flex !important;
@@ -25,7 +26,8 @@
   padding-top: 20px;
   font-family: "Roboto", sans-serif;
   /* background-image: radial-gradient(circle, #580861 0%, #0dd5fdcb 100%); */
-  background: linear-gradient(135deg, rgb(159, 103, 0) 60%, rgb(0, 44, 137));
+  background: linear-gradient(135deg, rgb(127 110 92) 50%, rgb(10 17 35)10%);
+
 }
 .login__title h2 {
   font-size: 1.rem;
