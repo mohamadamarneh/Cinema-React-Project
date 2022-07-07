@@ -7,16 +7,12 @@ import WhatshotIcon from "@mui/icons-material/Whatshot";
 import MovieIcon from "../../images/movie-icon.svg";
 // import TheatersIcon from "../../images/series-icon.svg";
 import $ from "jquery";
-
-
-
 $(function () {
   $(document).on("scroll", function () {
     var $nav = $(".navbar");
     $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
   });
 });
-
 const MainNav = () => {
   return (
     <>
@@ -24,7 +20,6 @@ const MainNav = () => {
         <Link className="navbar-brand" to="/">
           <Heading />
         </Link>
-
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active  nav__link">
@@ -80,10 +75,7 @@ const MainNav = () => {
                 contact US
               </Link>
             </li>
-            
-
                     </ul>
-
           {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
           <div>
             {true ? <div>
@@ -96,8 +88,6 @@ const MainNav = () => {
                   </Link>
                 </div>
               </div>
-
-
             </div> : <div>
               <div className="all__right">
                 <div className="btn-login">
@@ -106,15 +96,8 @@ const MainNav = () => {
                   </Link>
                 </div>
               </div>
-
-
             </div>}
           </div>
-
-
-
-
-
           <div>
             {true ? <div>
 
@@ -128,10 +111,6 @@ const MainNav = () => {
 
             </div> : <div></div>}
           </div>
-
-
-
-
         </div>
       </nav>
     </>

@@ -22,7 +22,7 @@ const SinglePage = () => {
   const [day, setDay] = useState('');
   const [price, setPrice] = useState(0);
   const [num_seats, setSeats] = useState(0);
-
+  const [Flag2, setFlag2] = useState(false);
 
 
 
@@ -98,7 +98,8 @@ const SinglePage = () => {
       num_seats,
       price
     })
-    window.alert('Booking Done Successfully');
+    // window.alert('Booking Done Successfully');
+    setFlag2(true);
   }
 
 
@@ -119,14 +120,16 @@ const SinglePage = () => {
   }
   const [comment, setcomment] = useState([]);
   const AddCommints = () => {
+  
     axios.post(`https://62c47caf7d83a75e39fb0ca3.mockapi.io/comments`, {
       user_id,
       id,
 
       comment,
     })
-    window.alert('comments send Successfully');
     window.location.href = `http://localhost:3000/movie/${id}`;
+   
+   
   }
 
 
@@ -262,7 +265,6 @@ const SinglePage = () => {
                       <li>
                         STATUS: <span>{content.status}</span>
                       </li>
-
                     </ul>
                   </div>
                 </div>
@@ -272,6 +274,9 @@ const SinglePage = () => {
           <div className="all__cast px-5 pt-5 mt-5 mb-5 container">
             <div className="cast__title mb-4">
               <h2>Reservation</h2>
+              {Flag2 && <div class="alert alert-success" role="alert">
+              Booking Done Successfully
+              </div>}
             </div>
             <div class='col-12'>
               {/* <Carousel mediaType={mediaType} id={id} /> */}
@@ -316,12 +321,22 @@ const SinglePage = () => {
             </div>
           </div>
 
+
+
+
+
+
+
+
+
+
           {/*  comments */}
 
           <div class="container-fluid mt-5" style={{ backgroundColor: "#0f022b00", color: "white"}}>
             <div className="cast__title mb-4">
               <h2>Comments</h2>
             </div>
+  
             <div class="d-flex justify-content-center row" style={{ textAlign: "left" }}>
               <div class="col-md-8" >
                 <div class="d-flex flex-column comment-section">
