@@ -10,31 +10,25 @@ import emailjs from "@emailjs/browser";
 
 const TvSeries = () => {
 
-  function sendEmail(e) {
-    e.preventDefault();
+  const [massages, setmessage] = useState([]);
+  const [name, setname] = useState([]);
+  const [subject, setsub] = useState([]);
+  const [email, setemail] = useState([]);
+  
+  const Addmessage = () => {
 
-    emailjs.sendForm(
-      "service_yxf2skm",
-      "template_r155plp",
-      e.target,
-      "WCGDLLYkfRg03lzke"
-    )
-      .then(
-        (result) => {
-          console.log(result.text);
-          console.log("message sent");
-        },
-        (error) => {
-          console.log(error.text);
-        });
-    e.target.reset()
-  };
-  const send = () =>{
-    window.alert("Send message successfully")
+    axios.post(`https://62c47caf7d83a75e39fb0ca3.mockapi.io/massages`, {
+      massages,
+      name,
+      email ,
+      subject,
+    })
+  window.alert("message send successfully");
+  window.location.href = `http://localhost:3001/all-series`;
   }
-
   return (
     <div>
+    
       <div class="section section-padding pb-0 container" style={{ color: "white", textAlign: "left", marginTop: "100px" }}>
      
         <div class="">
@@ -48,14 +42,14 @@ const TvSeries = () => {
               <div className="formContainer" style={{ marginTop: "100px" }}>
    
               <h4  style={{textAlign: "left" }}>Contact Us:</h4>
-                 <form onSubmit={sendEmail}>
+                 <form >
           
-                  <input type="text" class="d-flex flex-row align-items-start "placeholder="Your Name*" name="name"  />
-                  <input type="text" placeholder="Your Email*" name="email" class="d-flex flex-row align-items-start" />
-                  <input type="text" placeholder="Subject" class="d-flex flex-row align-items-start"/>
-                  <textarea class="d-flex flex-row align-items-start" placeholder="Message" style={{width:"485px" , height:"150px" ,borderRadius:"7px"}} name="massage"></textarea>
+                  <input type="text" class="d-flex flex-row align-items-start "placeholder="Your Name*" name="name" onChange={(e)=>setname(e.target.value)} />
+                  <input type="text" placeholder="Your Email*" name="email" class="d-flex flex-row align-items-start" onChange={(e)=>setemail(e.target.value)} />
+                  <input type="text" placeholder="Subject" class="d-flex flex-row align-items-start" onChange={(e)=>setsub(e.target.value)} />
+                  <textarea class="d-flex flex-row align-items-start" placeholder="Message" style={{width:"485px" , height:"150px" ,borderRadius:"7px"}} name="massage" onChange={(e)=>setmessage(e.target.value)} ></textarea>
                  
-                  <div class="btn btn-success px-4 mt-2 col-lg-" data-toggle="modal"  onClick={send}>Send</div>
+                  <div class="btn btn-success px-4 mt-2 col-lg-" data-toggle="modal"  onClick={Addmessage}>Send</div>
                 </form>
               </div>
             </div>

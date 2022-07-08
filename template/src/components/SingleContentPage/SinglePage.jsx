@@ -23,12 +23,12 @@ const SinglePage = () => {
   // const [user_id, setUserid] = useState(0);
   const user_id = JSON.parse(localStorage.getItem('id'));
   const user_name = (localStorage.getItem('name'));
+
   const [time, setTime] = useState(null);
   const [day, setDay] = useState(null);
   const [price, setPrice] = useState(5);
   const [num_seats, setSeats] = useState(1);
   const [movie_name, setMoviename]= useState(null);
-
 
   const auth = useContext(AuthContext);
 
@@ -105,8 +105,7 @@ const SinglePage = () => {
   // const movie_name= content.name;
 
   const handleBook = () => {
-    setMoviename(content.original_title)
-
+    setMoviename(content.original_title || content.name)
     if ((user_id != null)) {
       if ((day != null) && (time != null) && (num_seats != 0)) {
         axios.post(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations`, {
