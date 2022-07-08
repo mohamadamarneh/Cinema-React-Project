@@ -12,7 +12,7 @@ import { AuthContext, Signupprovider } from '../Authetication/AuthContext';
 
 
 
-
+const user_id =localStorage.getItem('id') ;
 
 
 
@@ -102,7 +102,7 @@ const MainNav = () => {
 
 
           <div>
-            {localStorage.getItem('id') == '' ? <div>
+            {!user_id  ? <div>
 
 
               <div className="all__right">
@@ -132,7 +132,7 @@ const MainNav = () => {
             </div>}
           </div>
           <div>
-            {localStorage.getItem('id') == '' ? <div>
+            {!user_id ? <div>
 
               <div className="all__right">
                 <div className="btn-login">

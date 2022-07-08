@@ -23,10 +23,12 @@ const SinglePage = () => {
   // const [user_id, setUserid] = useState(0);
   const user_id = JSON.parse(localStorage.getItem('id'));
   const user_name = (localStorage.getItem('name'));
+
   const [time, setTime] = useState(null);
   const [day, setDay] = useState(null);
-  const [price, setPrice] = useState(0);
-  const [num_seats, setSeats] = useState(0);
+  const [price, setPrice] = useState(5);
+  const [num_seats, setSeats] = useState(1);
+  const [movie_name, setMoviename]= useState(null);
 
   const auth = useContext(AuthContext);
 
@@ -100,8 +102,10 @@ const SinglePage = () => {
   //Reservation Function
 
   console.log(auth.islogin);
-  const handleBook = () => {
+  // const movie_name= content.name;
 
+  const handleBook = () => {
+    setMoviename(content.original_title || content.name)
     if ((user_id != null)) {
       if ((day != null) && (time != null) && (num_seats != 0)) {
         axios.post(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations`, {
@@ -109,7 +113,8 @@ const SinglePage = () => {
           time,
           day,
           num_seats,
-          price
+          price,
+          movie_name
         })
         window.alert('Booking Done Successfully');
       }
@@ -331,11 +336,11 @@ const SinglePage = () => {
 
                 <div class="form-group col-3">
                   <label>Number of Seats</label>
-                  <input type='number' class='form-control' min='1' max='150' placeholder="0" onChange={(e) => { setSeats(e.target.value); setPrice(e.target.value * 5); }} required></input>
+                  <input type='number' class='form-control' min='1' max='150' placeholder="1" onChange={(e) => { setSeats(e.target.value); setPrice(e.target.value * 5); }} required></input>
                 </div>
                 <div class="form-group col-3">
                   <label>Price</label>
-                  <input type='text' class='form-control' min='1' max='150' placeholder="0" value={price + ' JD'} required disabled></input>
+                  <input type='text' class='form-control' min='1' max='150' placeholder="5" value={price + ' JD'} required disabled></input>
                 </div>
                 <div class="col-12">
                   <br />

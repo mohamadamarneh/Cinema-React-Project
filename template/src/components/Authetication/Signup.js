@@ -53,6 +53,7 @@ const SignIn = () => {
           if (user.email == email) {
             if (user.password == password) {
               localStorage.setItem("id", user.id);
+              localStorage.setItem('name',user.name)
               console.log(user.id)
               auth.setislogin(false);
 
