@@ -105,7 +105,7 @@ const Home = () => {
             </div>
           </div>
           <hr />
-          <div className="TreadingHome3">
+          {/* <div className="TreadingHome3">
             <div className="title__home">
               <div className="btn__home">
                 <h6>
@@ -125,7 +125,7 @@ const Home = () => {
                   <SingleData key={n.id} mediaType="tv" {...n} />
                 ))}
             </div>
-          </div>
+          </div> */}
           <hr />
           <div className="TreadingHome3">
             <div className="title__home">
