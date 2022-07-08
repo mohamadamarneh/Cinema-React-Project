@@ -6,6 +6,8 @@ import "./../node_modules/touch-loader/touchLoader";
 import React, { useEffect, useState } from "react";
 import Myloader from "react-spinners/ClipLoader";
 import mySvg from "./images/hbo-max.svg";
+import png from "./images/Logo.png";
+
 import RoutesAuth from "./config/Routes/RoutesAuth";
 import NotFound from "./pages/Errors/NotFound";
 
@@ -38,7 +40,7 @@ function App() {
             className="m__load"
             speedMultiplier={1.5}
           />
-          <img src={mySvg} alt="" width="300" className="logo2 pt-4" />{" "}
+          <img src={png} alt="" width="300" className="logo2 pt-4" />{" "}
         </div>
       )}
     </>
