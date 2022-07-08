@@ -22,9 +22,15 @@ const SinglePage = () => {
 
   // const [user_id, setUserid] = useState(0);
   const user_id = JSON.parse(localStorage.getItem('id'));
+<<<<<<< HEAD
 
   const [time, setTime] = useState('');
   const [day, setDay] = useState('');
+=======
+  const user_name = (localStorage.getItem('name'));
+  const [time, setTime] = useState(null);
+  const [day, setDay] = useState(null);
+>>>>>>> c9b82331756e596a73ffe7c1fa1432ec40e14b86
   const [price, setPrice] = useState(0);
   const [num_seats, setSeats] = useState(0);
 
@@ -97,21 +103,27 @@ const SinglePage = () => {
   }, [id, setContent]);
 
 
+  //Reservation Function
+
   console.log(auth.islogin);
   const handleBook = () => {
 
-    if (user_id != null) {
-      axios.post(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations`, {
-        user_id,
-        time,
-        day,
-        num_seats,
-        price
-      })
-      window.alert('Booking Done Successfully');
+    if ((user_id != null)) {
+      if ((day != null) && (time != null) && (num_seats != 0)) {
+        axios.post(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations`, {
+          user_id,
+          time,
+          day,
+          num_seats,
+          price
+        })
+        window.alert('Booking Done Successfully');
+      }
+      else {
+        window.alert('Please Fill All The Fields')
+      }
     }
     else {
-      console.log(auth.islogin);
       window.alert('Please Login To Complete Your Reservation');
     }
 
@@ -135,18 +147,18 @@ const SinglePage = () => {
     console.log(comments);
   }
 
-  const [comment, setcomment] = useState([]);
+  const [comment, setcomment] = useState(null);
   const AddCommints = () => {
-  
-    axios.post(`https://62c47caf7d83a75e39fb0ca3.mockapi.io/comments`, {
-      user_id,
-      id,
+    if ((user_id != null) && (comment != null)) {
+      axios.post(`https://62c47caf7d83a75e39fb0ca3.mockapi.io/comments`, {
+        user_id,
+        id,
+        comment,
+        user_name,
+      })
+      window.location.href = `http://localhost:3000/movie/${id}`;
+    }
 
-      comment,
-    })
-    window.location.href = `http://localhost:3000/movie/${id}`;
-   
-   
   }
 
 
@@ -288,10 +300,13 @@ const SinglePage = () => {
               </div>
             )}
           </div>
+
+          {/* Start Reservation form */}
+
           <div className="all__cast px-5 pt-5 mt-5 mb-5 ">
             <div className="cast__title mb-4">
               <h2>Reservation</h2>
-             
+
             </div>
             <div class='col-12'>
               {/* <Carousel mediaType={mediaType} id={id} /> */}
@@ -299,6 +314,7 @@ const SinglePage = () => {
                 <div class="form-group col-3 mt-1">
                   <label >Day</label>
                   <select class="form-control" onChange={(e) => setDay(e.target.value)} required>
+                    <option value="" selected disabled hidden>Choose option</option>
                     <option>Sunday</option>
                     <option>Monday</option>
                     <option>Tuesday</option>
@@ -312,6 +328,7 @@ const SinglePage = () => {
                   <label>Time</label>
 
                   <select class="form-control" onChange={(e) => setTime(e.target.value)} required>
+                    <option value="" selected disabled hidden>Choose option</option>
                     <option>13:00 - 15:00</option>
                     <option>15:30 - 17:00</option>
                     <option>19:00 - 21:00</option>
@@ -336,6 +353,9 @@ const SinglePage = () => {
             </div>
           </div>
 
+          {/* End Reservation form */}
+
+
 
           {/*  comments */}
 
@@ -343,7 +363,7 @@ const SinglePage = () => {
             <div className="cast__title mb-4">
               <h2>Comments</h2>
             </div>
-  
+
             <div class="d-flex justify-content-center row" style={{ textAlign: "left" }}>
               <div class="col-md-8" >
                 <div class="d-flex flex-column comment-section">
@@ -370,9 +390,11 @@ const SinglePage = () => {
                       <img class="rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" width="40" />
                       <textarea class="form-control ml-1 shadow-none textarea" onChange={(e) => setcomment(e.target.value)} disabled={user_id != null ? false : true}></textarea>
                     </div>
-                    <div class="alert alert-warning ml-5 mt-1" role="alert">
+                    {user_id == null && (
+                      <div class="alert alert-warning ml-5 mt-1" role="alert">
                         You need to be logged in to be able to comment
                       </div>
+                    )}
                     <div class="mt-2 text-left pl-5">
                       <div class="btn btn-success px-4 mt-2 col-lg-" data-toggle="modal" onClick={AddCommints} >Send</div>
                     </div>
