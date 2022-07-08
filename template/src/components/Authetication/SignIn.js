@@ -49,6 +49,7 @@ const SignIn = () => {
 
               console.log(response.data[i].id);
               localStorage.setItem('id',response.data[i].id)
+              localStorage.setItem('name',response.data[i].name)
               auth.setislogin(false);
               window.location.href = "/";
             }
