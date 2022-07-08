@@ -114,11 +114,20 @@ const MainNav = () => {
               </div>
             </div> : <div>
               <div className="all__right">
-                <div className="btn-login">
-                  <Link to="/">
-                    <button className=" login-btn" onClick={handellogout}>LogOut</button>
+                <div className="btn-login b-3">
+                <Link to="/profile">
+                    <button className="login-btn ">Profile</button>
+                    
                   </Link>
+
+                  {/* add profile button  note *** it must be user icon on click give dropdown list include profile and logput */}
+                  <Link to="/">
+                    <button className=" login-btn ml-3" onClick={handellogout}>LogOut</button>
+                    
+                  </Link>
+                  
                 </div>
+                
               </div>
             </div>}
           </div>

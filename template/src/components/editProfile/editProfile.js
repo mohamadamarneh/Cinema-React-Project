@@ -14,7 +14,7 @@ const EditProfile = () => {
     const [Persons, setapi] = useState([]);
 
     useEffect(() => {
-        fetch(`https://62c52d60a361f725127c1c74.mockapi.io/users/1`)
+        fetch(`https://62c52d60a361f725127c1c74.mockapi.io/users/${userId}`)
             .then(x => x.json())
             .then(y => setapi(y));
     }
@@ -37,16 +37,14 @@ const EditProfile = () => {
     
     const [conpass, setconPass] = useState('');
 
-
     const [passmsg, setpassmsg] = useState('');
     const [emailmsg, setEmailmsg] = useState('');
     const [Namemsg, setNamemsg] = useState('');
     const [phonemsg, setPhonemsg] = useState('');
 
-
     const updateAPIData = (e) => {
         e.preventDefault();
-        axios.put(`https://62c52d60a361f725127c1c74.mockapi.io/users/1`, {
+        axios.put(`https://62c52d60a361f725127c1c74.mockapi.io/users/${userId}`, {
             name:name ,
             email:email ,
             password:pass

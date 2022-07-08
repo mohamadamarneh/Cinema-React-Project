@@ -145,10 +145,7 @@ const Profile = () => {
                                                 <td>E-mail :</td>
                                                 <td> {Persons.email} </td>
                                             </tr>
-                                            <tr>
-                                                <td>Phone :</td>
-                                                <td> {Persons.password} </td>
-                                            </tr>
+     
                                         </tbody>
                                     </table>
                                 </div>
@@ -168,7 +165,7 @@ const Profile = () => {
                                                     <th>Movies</th>
                                                     <th>day </th>
                                                     <th>time</th>
-                                                    <th>Create</th>
+                                                    <th>Total coast</th>
 
                                                 </tr>
                                                 <tr>
@@ -184,7 +181,7 @@ const Profile = () => {
                                                 {movies.map((a, b) =>
 
                                                     <tr>
-                                                        <td>{a.id}</td>
+                                                        <td>{a.movie_name}</td>
                                                         <td>{a.day}</td>
                                                         <td>{a.time}</td>
                                                         <td>{a.price}</td>
