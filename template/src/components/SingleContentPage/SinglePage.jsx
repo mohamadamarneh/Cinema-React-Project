@@ -22,15 +22,9 @@ const SinglePage = () => {
 
   // const [user_id, setUserid] = useState(0);
   const user_id = JSON.parse(localStorage.getItem('id'));
-<<<<<<< HEAD
-
-  const [time, setTime] = useState('');
-  const [day, setDay] = useState('');
-=======
   const user_name = (localStorage.getItem('name'));
   const [time, setTime] = useState(null);
   const [day, setDay] = useState(null);
->>>>>>> c9b82331756e596a73ffe7c1fa1432ec40e14b86
   const [price, setPrice] = useState(0);
   const [num_seats, setSeats] = useState(0);
 
