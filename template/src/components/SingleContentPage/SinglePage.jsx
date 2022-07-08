@@ -22,6 +22,7 @@ const SinglePage = () => {
 
   // const [user_id, setUserid] = useState(0);
   const user_id = JSON.parse(localStorage.getItem('id'));
+
   const [time, setTime] = useState('');
   const [day, setDay] = useState('');
   const [price, setPrice] = useState(0);
