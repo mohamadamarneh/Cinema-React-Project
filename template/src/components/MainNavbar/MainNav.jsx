@@ -31,6 +31,7 @@ const MainNav = () => {
   
   auth.setislogin(true);
   localStorage.removeItem('id');
+  localStorage.removeItem('name');
 
   }
  

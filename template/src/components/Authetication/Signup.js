@@ -180,7 +180,7 @@ const SignIn = () => {
                     </div>
 
                     <div className="sign_name">
-                      <h5>confirm password</h5>
+                      <h5>Confirm password</h5>
                       <input
                         type="password"
                         placeholder="Enter Pasword"
