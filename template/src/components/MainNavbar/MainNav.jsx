@@ -1,6 +1,6 @@
 import Heading from "../Header/Heading";
 import "./MainNav.css";
-import React, { useContext , useState} from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import HomeIcon from "../../images/home-icon.svg";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
@@ -8,11 +8,11 @@ import MovieIcon from "../../images/movie-icon.svg";
 // import TheatersIcon from "../../images/series-icon.svg";
 import $ from "jquery";
 
-import {AuthContext , Signupprovider} from '../Authetication/AuthContext';
+import { AuthContext, Signupprovider } from '../Authetication/AuthContext';
 
 
 
-
+const user_id =localStorage.getItem('id') ;
 
 
 
@@ -25,16 +25,15 @@ $(function () {
 const MainNav = () => {
 
   const auth = useContext(AuthContext);
-  
-  function handellogout()
-  {
-  
-  auth.setislogin(true);
-  localStorage.removeItem('id');
-  localStorage.removeItem('name');
+
+  function handellogout() {
+
+    auth.setislogin(true);
+    localStorage.removeItem('id');
+    localStorage.removeItem('name');
 
   }
- 
+
 
   return (
     <>
@@ -58,7 +57,7 @@ const MainNav = () => {
                 Home <span className="sr-only">(current)</span>
               </Link>
             </li>
-           
+
             <li className="nav-item  nav__link">
               <Link className="nav-link" to="/all-movies">
                 <img
@@ -83,27 +82,27 @@ const MainNav = () => {
                     marginRight: "2px",
                   }}
                 />
-                About 
+                About
               </Link>
             </li>
             <li className="nav-item nav__link">
               <Link className="nav-link" to="/all-series">
-           
-                <i class='fas fa-mobile-alt'   style={{
-                    fontSize: "17px",
-                    marginBottom: "5px",
-                    marginRight: "1px",
-                  }}></i>
+
+                <i class='fas fa-mobile-alt' style={{
+                  fontSize: "17px",
+                  marginBottom: "5px",
+                  marginRight: "1px",
+                }}></i>
                 contact US
               </Link>
             </li>
-                    </ul>
+          </ul>
           {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
-          
-         
-          
+
+
+
           <div>
-            {auth.islogin ? <div>
+            {!user_id  ? <div>
 
 
               <div className="all__right">
@@ -116,24 +115,24 @@ const MainNav = () => {
             </div> : <div>
               <div className="all__right">
                 <div className="btn-login b-3">
-                <Link to="/profile">
+                  <Link to="/profile">
                     <button className="login-btn ">Profile</button>
-                    
+
                   </Link>
 
                   {/* add profile button  note *** it must be user icon on click give dropdown list include profile and logput */}
                   <Link to="/">
                     <button className=" login-btn ml-3" onClick={handellogout}>LogOut</button>
-                    
+
                   </Link>
-                  
+
                 </div>
-                
+
               </div>
             </div>}
           </div>
           <div>
-            {auth.islogin ? <div>
+            {!user_id ? <div>
 
               <div className="all__right">
                 <div className="btn-login">
