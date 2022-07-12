@@ -6,7 +6,7 @@
 }
 .search input {
   width: 100%;
-  height: 46px;
+  height: 39px;
   border-radius: 5px;
   outline: none;
   text-indent: 50px;
@@ -46,6 +46,7 @@
   color: #0d0c35;
   bottom: 0px;
   right: 0px;
+  
 }
 TextField {
   width: 500px !important;
