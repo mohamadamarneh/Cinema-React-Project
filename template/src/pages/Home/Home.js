@@ -154,6 +154,38 @@ const Home = () => {
           <Myloader color={color} size={60} />
         </div>
       )}
+
+
+      <div class="container mt-5" style={{height:'500px'}}>
+        <div class="container" style={{height:'500px'}}>
+          <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+              <div class="position-relative overflow-hidden ps-5 pt-5 h-100" >
+                <img class="" src="amg2.jpg" alt="" style={{objectFit: 'cover',width:'100%'}}/>
+
+              </div>
+            </div>
+            <div class="col-lg-6 wow fadeInUp text-white text-start" data-wow-delay="0.5s">
+              <div class="h-100 text-start">
+                <h1 class="display-6 mb-4 text-start">Book your movie now</h1>
+                <p text-start>You can watch your favorite movie by booking on our website, we will offer you the best ways to book your favorite movie in more than one time and more than a day
+                </p>
+                <p class="mb-4"> Click on the picture of your favorite movie and choose the available reservation that suits you, then confirm the reservation and do not forget to come to us
+                </p>
+                <p class="mb-4">You can also add your opinion of the films</p>
+                <div class="row g-2 mb-4 pb-2">
+                  <div class="col-sm-6">
+                    <i class="fa fa-check text-primary me-2"></i>Immediate booking
+                  </div>
+                  <div class="col-sm-6">
+                    <i class="fa fa-check text-primary me-2"></i>More than one book
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

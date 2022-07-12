@@ -26,14 +26,9 @@ const SinglePage = () => {
 
   const [time, setTime] = useState(null);
   const [day, setDay] = useState(null);
-<<<<<<< HEAD
-  const [price, setPrice] = useState(0);
-  const [num_seats, setSeats] = useState(0);
-=======
   const [price, setPrice] = useState(5);
   const [num_seats, setSeats] = useState(1);
   const [movie_name, setMoviename]= useState(null);
->>>>>>> 4893e0c9d7aaf7bce141e68ec768b6bf927aa141
 
   const auth = useContext(AuthContext);
 
