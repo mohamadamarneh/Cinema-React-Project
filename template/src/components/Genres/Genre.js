@@ -57,6 +57,7 @@ const Genre = ({
     <>
       <div className="dropdown" style={{ position: "relative " }}>
         <Link
+        style={{ width: "200px"}}
           className="btn btn-secondary dropdown-toggle mybtn"
           to="#"
           role="button"
