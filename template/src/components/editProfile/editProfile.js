@@ -44,6 +44,24 @@ const EditProfile = () => {
 
     const updateAPIData = (e) => {
         e.preventDefault();
+
+
+
+        // console.log(pass)
+        // console.log(conpass)
+        // if(pass !== conpass){
+        //     return( 
+        //         document.getElementById("messag").innerHTML=`      
+        //         <div class="alert alert-danger" role="alert" >
+        //         confirm password or password not correct
+        //     </div>`
+                
+        //     )
+            
+        // }
+
+
+        
         axios.put(`https://62c52d60a361f725127c1c74.mockapi.io/users/${userId}`, {
             name:name ,
             email:email ,
@@ -51,31 +69,12 @@ const EditProfile = () => {
 
         })
 
-        history.push('/profile')
+
+        history.replace('/profile')
+        // Redirect.to="/profile" 
+        // window.location.href = '/profile'
     }
 
-    //    function twofunc(e){
-    //     setPass(e.target.value);
-    //     handleConfpass()
-    //    }
-
-    // console.log(Persons)
-
-    // const handleUpdate = (e) => {
-    //     e.preventDefault();
-    //     if (pass !== conpass) {
-    //         setpassmsg('password and confirm password are not same');
-    //         if (!email === "") {
-    //             setEmailmsg('not correct email')
-    //         }
-    //     }
-// }
-
-    // const handleUpdate =(e)=> {
-    //     e.preventDefault();
-    //     if(pass !== conpass){
-    //     }
-    // }
 
     return (
         <React.Fragment>
@@ -109,32 +108,30 @@ const EditProfile = () => {
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <input required type="password" class="form-control" 
-                                    onChange={e => setconPass(e.target.value)} defaultValue={Persons.password} />
+                                    onChange={e => setPass(e.target.value)} defaultValue={Persons.password} />
                                 </div>
                             </div>
-                            <div class="row mb-3">
+                            {/* <div class="row mb-3">
                                 <div class="col-sm-3">
                                     <h6 class="mb-">Confirm Password</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <input required type="password" class="form-control" 
-                                    onChange={(e) => setconPass(e.target.value)} defaultValue={Persons.password} />
+                                    onChange={(e) => setconPass(e.target.value)}  />
                                 </div>
-                            </div>
+                            </div> */}
+                            
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 text-secondary">
-                                    
+                                <div id='messag'></div>
                                 <button class="btn btn-primary px-4"  onClick={updateAPIData}> Save Changes</button>
                                 
-                                    {/* <div class="alert alert-danger" role="alert" >
-                                        {passmsg}
-                                    </div> */}
+                                
                                 </div>
                             </div>
                         </div>
                     </form>
-                    
                 </div>
 
             </div>

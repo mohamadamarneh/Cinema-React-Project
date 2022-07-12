@@ -157,7 +157,7 @@ const Profile = () => {
                             <div className="card mb-4 bg-dark" id='movi'>
 
                                 <div className="card-body bg-dark " id='movi'>
-                                    <div className="table-responsive" id='movi' >
+                                    <div className="table" id='movi' >
 
                                         <table className="table card-table m-0 table-dark " id='movit'>
                                             <tbody>
@@ -168,13 +168,7 @@ const Profile = () => {
                                                     <th>Total coast</th>
 
                                                 </tr>
-                                                <tr>
-                                                    <td>Harry potter</td>
-                                                    <td><span className="fa fa-check text-primary"></span></td>
-                                                    <td><span className="fa fa-times text-light"></span>axxa</td>
-                                                    <td><span className="fa fa-times text-light"></span>aa</td>
-
-                                                </tr>
+                           
 
 
 

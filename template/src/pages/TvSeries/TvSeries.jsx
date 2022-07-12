@@ -34,14 +34,17 @@ const TvSeries = () => {
         <div class="">
           <div class="row learts-mb-n30">
 
-            <div class="col-md-6 col-12 align-self-center learts-mb-30 mt-5 " style={{ marginTop: "100px" }}>
-              <img src="https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80" alt="" class="img-fluid" />
+            <div class="col-md-6 col-12 align-self-center learts-mb-30 mt-5 " style={{ marginTop: "150px" }}>
+              <img src="https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80" alt="" class="img-fluid " />
 
             </div>
-            <div class="col-md-6 col-12 text-center learts-mb-30 ">
+            <div class="col-md-6 col-12  learts-mb-30 ">
               <div className="formContainer" style={{ marginTop: "100px" }}>
    
-              <h4  style={{textAlign: "left" }}>Contact Us:</h4>
+              {/* <h4  style={{textAlign: "left" }}>Contact Us</h4> */}
+              <h1 class="display-6 mb-4"> Contact Us Whether you have a question</h1>
+                    
+              {/* <h1 class="display-6 mb-4"> Contact Us Whether you have a question</h1> */}
                  <form >
           
                   <input type="text" class="d-flex flex-row align-items-start "placeholder="Your Name*" name="name" onChange={(e)=>setname(e.target.value)} />
