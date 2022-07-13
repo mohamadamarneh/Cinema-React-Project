@@ -22,6 +22,7 @@ $(function () {
     $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
   });
 });
+
 const MainNav = () => {
 
   const auth = useContext(AuthContext);
@@ -73,7 +74,7 @@ const MainNav = () => {
               </Link>
             </li>
             <li className="nav-item  nav__link">
-              <Link className="nav-link" to="/treading">
+              <Link className="nav-link" to="/treading" >
                 <WhatshotIcon
                   style={{
                     fontSize: "17px",
