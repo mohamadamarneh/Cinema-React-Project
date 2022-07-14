@@ -25,12 +25,16 @@ const SinglePage = () => {
   const user_name = (localStorage.getItem('name'));
 
   const [time, setTime] = useState(null);
-  const [day, setDay] = useState(null);
+  const [day, setDay] = useState('');
   const [price, setPrice] = useState(5);
   const [num_seats, setSeats] = useState(1);
-  const [movie_name, setMoviename]= useState(null);
+  const [movie_name, setMoviename] = useState(null);
 
   const auth = useContext(AuthContext);
+
+
+  const [counters, setCounters] = useState(null);
+
 
   // console.log(localStorage.getItem('id'));
 
@@ -43,6 +47,7 @@ const SinglePage = () => {
   // eslint-disable-next-line
   const [color, setColor] = useState("grey");
   const history = useHistory();
+
   const { id, mediaType } = useParams();
 
   const fetchData = async () => {
@@ -104,19 +109,71 @@ const SinglePage = () => {
   console.log(auth.islogin);
   // const movie_name= content.name;
 
+
+  useEffect(
+    () => {
+      axios.get(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations?id=${id}`)
+        .then((res) => setCounters(res.data))
+    }
+    )
+
   const handleBook = () => {
+
     setMoviename(content.original_title || content.name)
     if ((user_id != null)) {
       if ((day != null) && (time != null) && (num_seats != 0)) {
-        axios.post(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations`, {
-          user_id,
-          time,
-          day,
-          num_seats,
-          price,
-          movie_name
-        })
-        window.alert('Booking Done Successfully');
+        if (counters != null) {
+          const d = counters.filter((s) => s.day == day);
+
+          if (d.length > 0) {
+            const sum = d.map(datum => parseInt(datum.num_seats)).reduce((a, b) => a + b)
+            console.log(sum);
+
+            if (sum < 5 && ((5 - sum) >= num_seats)) {
+
+              axios.post(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations`, {
+                user_id,
+                time,
+                day,
+                num_seats,
+                price,
+                movie_name,
+                id
+              })
+
+              window.alert('Booking Done Successfully');
+            }
+            else {
+              window.alert('Tickets Cannot Be Booked');
+            }
+
+          } else {
+            axios.post(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations`, {
+              user_id,
+              time,
+              day,
+              num_seats,
+              price,
+              movie_name,
+              id
+            })
+            window.alert('Booking Done Successfully');
+
+          }
+
+        }
+        else {
+          axios.post(`https://62baba8b573ca8f83289f6c8.mockapi.io/reservations`, {
+            user_id,
+            time,
+            day,
+            num_seats,
+            price,
+            movie_name,
+            id
+          })  
+          window.alert('Booking Done Successfully');
+        }
       }
       else {
         window.alert('Please Fill All The Fields')
@@ -329,8 +386,8 @@ const SinglePage = () => {
                   <select class="form-control" onChange={(e) => setTime(e.target.value)} required>
                     <option value="" selected disabled hidden>Choose option</option>
                     <option>13:00 - 15:00</option>
-                    <option>15:30 - 17:00</option>
-                    <option>19:00 - 21:00</option>
+                    {/* <option>15:30 - 17:00</option>
+                    <option>19:00 - 21:00</option> */}
                   </select>
                 </div>
 
