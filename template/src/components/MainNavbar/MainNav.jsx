@@ -51,9 +51,10 @@ const MainNav = () => {
                     fontSize: "17px",
                     marginBottom: "5px",
                     marginRight: "0px",
+                
                   }}
                   alt=""
-                />
+                  />
                 Home <span className="sr-only">(current)</span>
               </Link>
             </li>
