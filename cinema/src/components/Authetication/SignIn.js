@@ -147,11 +147,11 @@ const SignIn = () => {
                          <a href="url">Register</a>
                     </Link>
                   </p>
-                  <p>  
+                  {/* <p>  
                     <Link to ="/Forget">
                          <a href="url">Forgot password </a>
                     </Link>
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>

@@ -15,20 +15,21 @@ const TvSeries = () => {
   const [subject, setsub] = useState([]);
   const [email, setemail] = useState([]);
 
-  // const Addmessage = () => {
+  function Addmessage(e) {
 
-  //   axios.post(`https://62c47caf7d83a75e39fb0ca3.mockapi.io/massages`, {
-  //     massages,
-  //     name,
-  //     email ,
-  //     subject,
-  //   })
+    e.preventDefault();
+    axios.post(`https://62c47caf7d83a75e39fb0ca3.mockapi.io/massages`, {
+      massages,
+      name,
+      email ,
+      subject,
+    })
+
+
   // window.alert("message send successfully");
   // window.location.href = `http://localhost:3001/all-series`;
-  // }
+  
 
-  function Addmessage(e) {
-    e.preventDefault();
 
     emailjs.sendForm('service_2g5hjbh', 'template_nk1nx4e', e.target, '4wzL5Z_AqBhLCFm5q')
       .then((result) => {
@@ -65,10 +66,10 @@ const TvSeries = () => {
                 {/* <h1 class="display-6 mb-4"> Contact Us Whether you have a question</h1> */}
                 <form onSubmit={Addmessage}>
 
-                  <input type="text" class="d-flex flex-row align-items-start " placeholder="Your Name*" name="name" />
-                  <input type="text" placeholder="Your Email*" name="email" class="d-flex flex-row align-items-start" />
-                  <input type="text" placeholder="Subject" class="d-flex flex-row align-items-start" name="subject" />
-                  <textarea class="d-flex flex-row align-items-start" placeholder="Message" style={{ width: "485px", height: "150px", borderRadius: "7px" }} name="massage"></textarea>
+                  <input type="text" class="d-flex flex-row align-items-start " placeholder="Your Name*" name="name" onChange={e => setname(e.target.value)}  />
+                  <input type="text" placeholder="Your Email*" name="email" class="d-flex flex-row align-items-start" onChange={e => setemail(e.target.value)}  />
+                  <input type="text" placeholder="Subject" class="d-flex flex-row align-items-start" name="subject" onChange={e => setsub(e.target.value)}  />
+                  <textarea class="d-flex flex-row align-items-start" placeholder="Message" style={{ width: "485px", height: "150px", borderRadius: "7px" }} name="massage" onChange={e => setmessage(e.target.value)}></textarea>
                   {/* <input type="text" placeholder="Subject" class="d-flex flex-row align-items-start" name="massage" /> */}
                   <button class="btn btn-success px-4 mt-2 col-lg-" data-toggle="modal" type="submit">Send</button>
                 </form>

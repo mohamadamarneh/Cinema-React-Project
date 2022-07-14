@@ -36,7 +36,7 @@ const SignIn = () => {
         password: password,
       },
     });
-    getdata( );
+    getdata();
   }
 
   // useEffect(() => {
@@ -53,7 +53,7 @@ const SignIn = () => {
           if (user.email == email) {
             if (user.password == password) {
               localStorage.setItem("id", user.id);
-              localStorage.setItem('name',user.name)
+              localStorage.setItem('name', user.name)
               console.log(user.id)
               auth.setislogin(false);
 
@@ -115,7 +115,7 @@ const SignIn = () => {
                     Google
                   </button>
                 </div>
-               
+
                 <div className="or__line">
                   <p className="span-h"></p>
                   <p className="span-p"> or</p>
@@ -193,11 +193,11 @@ const SignIn = () => {
                 </form>
                 <div className="new__acc">
                   {/* <button > <link to= {{pathname : '/', }}> Login </link  ></button> */}
-                    
+
                   <button id="btn" onClick={login}>Create New Account</button>
-                  <p>  Aready have an Account? 
-                    <Link to ="/login">
-                         <a href="url">Login</a>
+                  <p>  Aready have an Account?
+                    <Link to="/login">
+                      <a href="url">Login</a>
                     </Link>
                   </p>
                 </div>

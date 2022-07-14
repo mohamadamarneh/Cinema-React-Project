@@ -15,7 +15,7 @@ const Footer = () => {
               </p>
               <p>Irbid, Jordan</p>
               <p>
-                call Us: <span>(+962) 777777777</span>
+                call Us: <span>(+962) 778090543</span>
               </p>
             </div>
           </div>
